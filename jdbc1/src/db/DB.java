@@ -14,9 +14,9 @@ public class DB {
 	public static Connection getConnection() {
 		if (conn == null) {
 				try {
-				Properties props = loadProperties();
-				String url = props.getProperty("dburl");
-				DriverManager.getConnection(url, props);
+					Properties props = loadProperties();
+					String url = props.getProperty("dburl");
+					conn = DriverManager.getConnection(url, props);
 			
 				}
 				catch (SQLException e) {
@@ -31,11 +31,9 @@ public class DB {
 		if (conn != null) {
 			try {
 				conn.close();
-				
 			}
 			catch (SQLException e) {
 				throw new DbException(e.getMessage());
-			
 			}
 			
 		}
